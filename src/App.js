@@ -13,12 +13,15 @@ function App() {
     const fetchData = async () => {
       const data = await getPokemon(query);
       setPokemon(data.results);
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
     };
+
     if (loading) {
       fetchData();
     }
-  }, [loading]);
+  }, [loading, query]);
 
   return (
     <div className="App">
