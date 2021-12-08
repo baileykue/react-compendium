@@ -1,5 +1,16 @@
 import React from 'react';
 
-export default function Controls() {
-  return <div></div>;
+export default function Controls({ query, setQuery, setLoading }) {
+  return (
+    <div>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+        }}
+      />
+      <button onClick={(e) => setLoading(true)}>Search</button>
+    </div>
+  );
 }
