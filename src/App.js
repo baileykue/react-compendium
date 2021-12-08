@@ -15,13 +15,20 @@ function App() {
       setPokemon(data.results);
       setLoading(false);
     };
-    fetchData();
-  });
+    if (loading) {
+      fetchData();
+    }
+  }, [loading]);
 
   return (
     <div className="App">
-      <Controls />
-      <PokeList pokemon={pokemon} />
+      {loading && <span className="loader"></span>}
+      {!loading && (
+        <>
+          <Controls query={query} setQuery={setQuery} setLoading={setLoading} />
+          <PokeList pokemon={pokemon} />
+        </>
+      )}
     </div>
   );
 }
