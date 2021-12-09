@@ -12,23 +12,15 @@ function App() {
   const [type, setType] = useState('all');
 
   useEffect(() => {
-    let timer;
-
     const fetchData = async () => {
       const data = await getPokemon(query, order, type);
       setPokemon(data.results);
-
-      timer = setTimeout(() => {
-        setLoading(false);
-      }, 3000);
+      setLoading(false);
     };
 
     if (loading) {
       fetchData();
     }
-    return () => {
-      clearInterval(timer);
-    };
   }, [loading, query, order, type]);
 
   return (
