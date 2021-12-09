@@ -11,10 +11,13 @@ function App() {
   const [type, setType] = useState('all');
 
   useEffect(() => {
+    let timer;
+
     const fetchData = async () => {
       const data = await getPokemon(query);
       setPokemon(data.results);
-      setTimeout(() => {
+
+      timer = setTimeout(() => {
         setLoading(false);
       }, 3000);
     };
@@ -22,10 +25,14 @@ function App() {
     if (loading) {
       fetchData();
     }
+    return () => {
+      clearInterval(timer);
+    };
   }, [loading, query]);
 
   return (
     <div className="App">
+      <h1>Pokedex</h1>
       {loading && <span className="loader"></span>}
       {!loading && (
         <>
