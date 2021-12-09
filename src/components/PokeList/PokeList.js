@@ -8,6 +8,11 @@ export default function PokeList({ pokemon, setCurrentPage, setLoading }) {
     setLoading(true);
   };
 
+  const handlePrevPage = () => {
+    setCurrentPage((prevState) => --prevState);
+    setLoading(true);
+  };
+
   return (
     <>
       <div className="poke-list">
@@ -17,7 +22,7 @@ export default function PokeList({ pokemon, setCurrentPage, setLoading }) {
       </div>
 
       <div>
-        <button>Prev Page</button>
+        <button onClick={handlePrevPage}>Prev Page</button>
         <button onClick={handleNextPage}>Next Page</button>
       </div>
     </>
