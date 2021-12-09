@@ -12,11 +12,11 @@ function App() {
   const [query, setQuery] = useState('');
   const [order, setOrder] = useState('asc');
   const [types, setTypes] = useState([]);
-  const [selectType, setSelecType] = useState('all');
+  const [selectType, setSelectType] = useState('all');
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPokemon(query, order);
+      const data = await getPokemon(query, order, currentPage, selectType);
       setPokemon(data.results);
       setLoading(false);
     };
@@ -24,7 +24,7 @@ function App() {
     if (loading) {
       fetchData();
     }
-  }, [loading, query, order]);
+  }, [loading, query, order, currentPage, selectType]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,12 +44,18 @@ function App() {
             query={query}
             setQuery={setQuery}
             setLoading={setLoading}
-            type={type}
-            setType={setType}
+            types={types}
+            selectType={selectType}
+            setSelectType={setSelectType}
             order={order}
             setOrder={setOrder}
           />
-          <PokeList pokemon={pokemon} query={query} type={type} />
+          <PokeList
+            pokemon={pokemon}
+            setCurrentPage={setCurrentPage}
+            loading={loading}
+            setLoading={setLoading}
+          />
         </>
       )}
     </div>

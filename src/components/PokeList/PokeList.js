@@ -2,17 +2,24 @@ import React from 'react';
 import PokeCard from '../PokeCard/PokeCard';
 import './PokeList.css';
 
-export default function PokeList({ pokemon, query, type }) {
-  const filterPoke = () => {
-    return pokemon.filter((poke) => {
-      return poke.pokemon.includes(query) && (poke.type_1 === type || type === 'all');
-    });
+export default function PokeList({ pokemon, setCurrentPage, setLoading }) {
+  const handleNextPage = () => {
+    setCurrentPage((prevState) => ++prevState);
+    setLoading(true);
   };
+
   return (
-    <div className="poke-list">
-      {filterPoke().map((poke) => (
-        <PokeCard key={poke.id} {...poke} />
-      ))}
-    </div>
+    <>
+      <div className="poke-list">
+        {pokemon.map((poke) => (
+          <PokeCard key={poke.id} {...poke} />
+        ))}
+      </div>
+
+      <div>
+        <button>Prev Page</button>
+        <button onClick={handleNextPage}>Next Page</button>
+      </div>
+    </>
   );
 }
