@@ -10,7 +10,7 @@ export default function PokeList({ pokemon, query, type }) {
   };
   return (
     <div className="poke-list">
-      {pokemon.map((poke) => (
+      {filterPoke().map((poke) => (
         <PokeCard key={poke.id} {...poke} />
       ))}
     </div>
