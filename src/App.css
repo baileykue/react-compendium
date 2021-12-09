@@ -20,7 +20,7 @@
 
 .loader::after {
   background: #0000;
-  color: #fff;
+  color: rgb(0, 0, 0);
   top: 100%;
   box-shadow: 32px -20px, -32px -20px;
   animation: split 0.5s ease-out infinite alternate;
@@ -44,7 +44,7 @@
 }
 
 body {
-  background-color: grey;
+  background-image: url(./pokeball-pattern.png);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
