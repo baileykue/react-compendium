@@ -1,4 +1,6 @@
 import React from 'react';
+import './Controls.css';
+import { Button, TextField, Select, MenuItem } from '@mui/material';
 
 export default function Controls({
   query,
@@ -12,7 +14,10 @@ export default function Controls({
 }) {
   return (
     <div>
-      <input
+      <TextField
+        id="outlined-basic"
+        label="Search Pokemon"
+        variant="outlined"
         type="text"
         value={query}
         onChange={(e) => {
@@ -20,37 +25,37 @@ export default function Controls({
         }}
       />
 
-      <label>
-        Sort:
-        <select
-          value={order}
-          onChange={(e) => {
-            setOrder(e.target.value);
-          }}
-        >
-          <option value="asc">Ascedning</option>
-          <option value="desc">Descending</option>
-        </select>
-      </label>
+      <span>Sort: </span>
+      <Select
+        variant="outlined"
+        value={order}
+        onChange={(e) => {
+          setOrder(e.target.value);
+        }}
+      >
+        <MenuItem value="asc">Ascedning</MenuItem>
+        <MenuItem value="desc">Descending</MenuItem>
+      </Select>
 
-      <label>
-        Type:
-        <select
-          value={selectType}
-          onChange={(e) => {
-            setSelectType(e.target.value);
-          }}
-        >
-          <option value="all">All</option>
-          {types.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
-      </label>
+      <span>Type:</span>
+      <Select
+        variant="outlined"
+        value={selectType}
+        onChange={(e) => {
+          setSelectType(e.target.value);
+        }}
+      >
+        <MenuItem value="all">All</MenuItem>
+        {types.map((type) => (
+          <MenuItem key={type} value={type}>
+            {type}
+          </MenuItem>
+        ))}
+      </Select>
 
-      <button onClick={() => setLoading(true)}>Search</button>
+      <Button variant="outlined" size="large" onClick={() => setLoading(true)}>
+        Search
+      </Button>
     </div>
   );
 }

@@ -1,4 +1,6 @@
 import './App.css';
+import background from './pokeball-pattern.png';
+
 import { useState, useEffect } from 'react';
 import Controls from './components/Controls/Controls';
 import PokeList from './components/PokeList/PokeList';
@@ -35,7 +37,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundImage: `url(${background})` }}>
       <h1>Pokedex</h1>
       {loading && <span className="loader"></span>}
       {!loading && (

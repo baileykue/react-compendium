@@ -1,6 +1,7 @@
 import React from 'react';
 import PokeCard from '../PokeCard/PokeCard';
 import './PokeList.css';
+import { Button } from '@mui/material';
 
 export default function PokeList({ pokemon, setCurrentPage, setLoading }) {
   const handleNextPage = () => {
@@ -21,9 +22,13 @@ export default function PokeList({ pokemon, setCurrentPage, setLoading }) {
         ))}
       </div>
 
-      <div>
-        <button onClick={handlePrevPage}>Prev Page</button>
-        <button onClick={handleNextPage}>Next Page</button>
+      <div className="button">
+        <Button variant="outlined" onClick={handlePrevPage}>
+          Prev Page
+        </Button>
+        <Button variant="outlined" onClick={handleNextPage}>
+          Next Page
+        </Button>
       </div>
     </>
   );
