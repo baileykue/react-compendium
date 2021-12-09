@@ -8,6 +8,7 @@ function App() {
   const [pokemon, setPokemon] = useState([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
+  const [type, setType] = useState('all');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +29,13 @@ function App() {
       {loading && <span className="loader"></span>}
       {!loading && (
         <>
-          <Controls query={query} setQuery={setQuery} setLoading={setLoading} />
+          <Controls
+            query={query}
+            setQuery={setQuery}
+            setLoading={setLoading}
+            type={type}
+            setType={setType}
+          />
           <PokeList pokemon={pokemon} />
         </>
       )}

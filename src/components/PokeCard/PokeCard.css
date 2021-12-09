@@ -12,3 +12,7 @@
 img {
   width: 300px;
 }
+
+span {
+  text-transform: capitalize;
+}
