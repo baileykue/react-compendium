@@ -29,7 +29,7 @@ export default function Controls({
           }}
         >
           <option value="asc">Ascedning</option>
-          <option value="dsc">Descending</option>
+          <option value="desc">Descending</option>
         </select>
       </label>
 
